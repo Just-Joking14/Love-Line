@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>My Valentine 💖</title>
+
+    <style>
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+        }
+
+        .heart {
+            font-size: 80px;
+            animation: beat 1s infinite;
+        }
+
+        @keyframes beat {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        h1 {
+            color: #fff;
+            margin: 20px 0;
+        }
+
+        .buttons {
+            margin-top: 30px;
+            position: relative;
+            height: 150px;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 18px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            position: absolute;
+        }
+
+        #yesBtn {
+            background-color: #ff4d6d;
+            color: white;
+            left: 50%;
+            transform: translateX(-120%);
+        }
+
+        #noBtn {
+            background-color: #555;
+            color: white;
+            left: 50%;
+            transform: translateX(20%);
+        }
+
+        #message {
+            display: none;
+            margin-top: 30px;
+            font-size: 30px;
+            color: #fff;
+        }
+
+        #videoContainer {
+            display: none;
+            margin-top: 25px;
+        }
+
+        video {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="heart">❤️</div>
+
+        <h1 id="question">Will you be my Valentine?</h1>
+
+        <div class="buttons">
+            <button id="yesBtn">Yes</button>
+            <button id="noBtn">No</button>
+        </div>
+
+        <div id="message">💕💕 I LOVE YOU TOO 💕💕</div>
+
+        <!-- VIDEO SECTION -->
+        <div id="videoContainer">
+            <video id="loveVideo" controls autoplay muted>
+                <source src="love-video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById("noBtn");
+        const yesBtn = document.getElementById("yesBtn");
+        const message = document.getElementById("message");
+        const videoContainer = document.getElementById("videoContainer");
+        const question = document.getElementById("question");
+        const video = document.getElementById("loveVideo");
+
+        // NO button escapes 😄
+        noBtn.addEventListener("mouseover", () => {
+            const x = Math.random() * 300 - 150;
+            const y = Math.random() * 120 - 60;
+            noBtn.style.transform = `translate(${x}px, ${y}px)`;
+        });
+
+        // YES button action ❤️
+        yesBtn.addEventListener("click", () => {
+            document.querySelector(".buttons").style.display = "none";
+            question.style.display = "none";
+            message.style.display = "block";
+            videoContainer.style.display = "block";
+
+            video.currentTime = 0;
+            video.play();
+        });
+    </script>
+
+</body>
+
+</html>
